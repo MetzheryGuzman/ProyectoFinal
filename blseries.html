@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metzhery Xcaret Guzmán Ricaño</title>
+
+    <!-- Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.cdnfonts.com/css/controwell-script" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/gogono-cocoa-mochi" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/perspicacious" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/sandy-king" rel="stylesheet">
+    <link rel="stylesheet" href="blseries.css">
+</head>
+
+<body>
+<img src="bl.webp" class="fondo-bl">
+<!-- NAVBAR -->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">
+                <img src="caesarchibi.png" class="bl-icon">
+                Inicio
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <img src="leewon.png" class="bl-icon">
+                    Unidad 1
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="demonslayer.html">Demon Slayer</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <img src="caesarchiquito.png" class="bl-icon">
+                    Unidad 2
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="marvel.html">Marvel</a></li>
+                    <li><a href="blseries.html">BL Series</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <img src="caesarleewon.png" class="bl-icon">
+                    Unidad 3
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="pokedex.html">Pokémon</a></li>
+                    <li><a href="peliculas.html">Películas</a></li>
+                    <li><a href="musica.html">Música</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ENCABEZADO -->
+<div class="container text-center">
+    <h1>💜 BL Series Database 💜</h1>
+    <p>
+        Explora y registra personajes de tus series BL favoritas.
+    </p>
+</div>
+
+<!-- FORMULARIO -->
+<section id="registro" class="container">
+    <h2>Registrar Personaje</h2>
+    <form id="formPersonaje">
+        <input
+            type="text"
+            id="nombrePersonaje"
+            placeholder="Nombre del personaje"
+            required
+        >
+        <input
+            type="text"
+            id="nombreActor"
+            placeholder="Nombre del actor"
+            required
+        >
+        <input
+            type="text"
+            id="rol"
+            placeholder="Rol"
+            required
+        >
+        <input
+            type="text"
+            id="tipoPersonaje"
+            placeholder="Tipo de Personaje"
+            required
+        >
+        <input
+            type="number"
+            id="edad"
+            placeholder="Edad (Actor)"
+            required
+        >
+        <input
+            type="text"
+            id="serie"
+            placeholder="Serie a la que pertenece"
+            required
+        >
+        <button type="submit">
+            Guardar Personaje
+        </button>
+    </form>
+</section>
+
+<!-- TABLA -->
+<section id="tabla" class="container">
+    <h2>Personajes Registrados</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Personaje</th>
+                <th>Actor</th>
+                <th>Rol</th>
+                <th>Tipo</th>
+                <th>Edad (Actor)</th>
+                <th>Serie</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tablaPersonajes">
+        </tbody>
+    </table>
+</section>
+
+<!-- CATÁLOGO -->
+<section id="catalogo" class="container">
+    <h2>Catálogo BL</h2>
+    <div
+        id="catalogoPersonajes"
+        class="catalogo">
+    </div>
+</section>
+<script>
+const formulario = document.getElementById("formPersonaje");
+let personajes =
+JSON.parse(localStorage.getItem("personajesBL")) || [];
+mostrarPersonajes();
+formulario.addEventListener("submit", function(e){
+    e.preventDefault();
+    const personaje = {
+        nombrePersonaje: document.getElementById("nombrePersonaje").value,
+        nombreActor: document.getElementById("nombreActor").value,
+        rol: document.getElementById("rol").value,
+        tipoPersonaje: document.getElementById("tipoPersonaje").value,
+        edad: document.getElementById("edad").value,
+        serie: document.getElementById("serie").value
+    };
+    personajes.push(personaje);
+    localStorage.setItem(
+        "personajesBL",
+        JSON.stringify(personajes)
+    );
+    formulario.reset();
+    mostrarPersonajes();
+});
+
+function mostrarPersonajes(){
+    const tabla =
+    document.getElementById("tablaPersonajes");
+    const catalogo =
+    document.getElementById("catalogoPersonajes");
+    tabla.innerHTML = "";
+    catalogo.innerHTML = "";
+    personajes.forEach((personaje, index) => {
+        tabla.innerHTML += `
+            <tr>
+                <td>${personaje.nombrePersonaje}</td>
+                <td>${personaje.nombreActor}</td>
+                <td>${personaje.rol}</td>
+                <td>${personaje.tipoPersonaje}</td>
+                <td>${personaje.edad}</td>
+                <td>${personaje.serie}</td>
+                <td>
+                    <button class="btn-eliminar" onclick="eliminarPersonaje(${index})">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+        `;
+        catalogo.innerHTML += `
+            <div class="card-personaje">
+                <h3>${personaje.nombrePersonaje}</h3>
+                <p>
+                    <strong>Actor:</strong>
+                    ${personaje.nombreActor}
+                </p>
+                <p>
+                    <strong>Rol:</strong>
+                    ${personaje.rol}
+                </p>
+                <p>
+                    <strong>Tipo:</strong>
+                    ${personaje.tipoPersonaje}
+                </p>
+                <p>
+                    <strong>Edad:</strong>
+                    ${personaje.edad}
+                </p>
+                <p>
+                    <strong>Serie:</strong>
+                    ${personaje.serie}
+                </p>
+            </div>
+        `;
+    });
+}
+function eliminarPersonaje(index){
+    personajes.splice(index, 1);
+    localStorage.setItem(
+        "personajesBL",
+        JSON.stringify(personajes)
+    );
+    mostrarPersonajes();
+}
+</script>
+</body>
+</html>

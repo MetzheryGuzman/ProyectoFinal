@@ -1,0 +1,230 @@
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0f0f0f;
+    color: white;
+}
+
+/* NAVBAR */
+.navbar{
+    background: rgba(20,20,20,0.95);
+    border: none;
+    border-radius: 0;
+    padding: 5px;
+}
+
+.navbar-brand,
+.navbar-nav > li > a{
+    color: #8fd14f !important;
+    font-weight: bold;
+    font-family: 'Controwell Script', sans-serif;
+    font-size: 17px;
+}
+
+.navbar-brand:hover,
+.navbar-nav > li > a:hover{
+    color: #ff6b6b !important;
+}
+
+/* DROPDOWN */
+.dropdown-menu{
+    background-color: #1f1f1f;
+    border: none;
+}
+
+.dropdown-menu li a{
+    color: white !important;
+}
+
+.dropdown-menu li a:hover{
+    background-color: #8fd14f !important;
+    color: black !important;
+}
+
+/* TITULO */
+h1{
+    text-align: center;
+    color: #8fd14f;
+    margin-top: 40px;
+    font-size: 55px;
+    text-shadow: 0 0 10px rgba(143,209,79,0.6);
+    font-family: 'Gogono Cocoa Mochi', sans-serif;
+}
+
+p{
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Perspicacious Italic', sans-serif;
+}
+
+/* SECCIONES */
+section{
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+h2{
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Sandy King', sans-serif;
+}
+
+/* FORMULARIO */
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input{
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #222;
+    color: white;
+}
+
+input:focus{
+    outline: none;
+    box-shadow: 0 0 10px #8fd14f;
+}
+
+button{
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #8fd14f;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    background-color: #ff6b6b;
+    color: white;
+}
+
+/* TABLA */
+.table{
+    background-color: rgba(255,255,255,0.08);
+    color: black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table thead{
+    background-color: #8fd14f;
+    color: black;
+}
+
+.table th,
+.table td{
+    text-align: center;
+}
+
+/* CATALOGO */
+.catalogo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* TARJETAS */
+.card-personaje{
+    width: 250px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card-personaje:hover{
+    transform: scale(1.05);
+}
+
+.card-personaje img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-personaje h3{
+    color: #8fd14f;
+}
+
+.card-personaje p{
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    h1{
+        font-size: 40px;
+    }
+
+    section{
+        margin: 15px;
+    }
+
+}
+
+/* FONDO */
+.fondo-ds{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.25;
+}
+
+/* ICONOS DEMON SLAYER */
+.ds-icon{
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* CONTENIDO MÁS VISIBLE */
+section{
+    position: relative;
+    z-index: 1;
+}
+
+button{
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.btn-eliminar{
+    background: #d62828;
+    color: white;
+}
+
+.btn-eliminar:hover{
+    background: #a4161a;
+}
+
+.navbar{
+    position: relative;
+    z-index: 9999;
+}
+
+.dropdown-menu{
+    z-index: 10000;
+}

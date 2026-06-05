@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metzhery Xcaret Guzmán Ricaño</title>
+
+    <!-- Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.cdnfonts.com/css/controwell-script" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/gogono-cocoa-mochi" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/perspicacious" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/sandy-king" rel="stylesheet">
+    <link rel="stylesheet" href="demonslayer.css">
+</head>
+
+<body>
+<img src="demonslayer.jpg" class="fondo-ds">
+<!-- NAVBAR -->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">
+                <img src="Tomioka.png" class="ds-icon">
+                Inicio
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <img src="Tanjiro.png" class="ds-icon">
+                    Unidad 1
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="demonslayer.html">Demon Slayer</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <img src="Nezuko.png" class="ds-icon">
+                    Unidad 2
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="marvel.html">Marvel</a></li>
+                    <li><a href="blseries.html">BL Series</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <img src="Zenitsu.png" class="ds-icon">
+                    Unidad 3
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="pokedex.html">Pokémon</a></li>
+                    <li><a href="peliculas.html">Películas</a></li>
+                    <li><a href="musica.html">Música</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ENCABEZADO -->
+<div class="container text-center">
+    <h1>⚔️ Demon Slayer Database ⚔️</h1>
+    <p>
+        Explora, registra y consulta personajes del universo Demon Slayer.
+    </p>
+</div>
+
+<!-- REGISTRO -->
+<section id="registro" class="container">
+    <h2>Registrar Personaje</h2>
+    <form id="formPersonaje">
+    <input type="text" id="nombre" placeholder="Nombre" required>
+    <input type="text" id="alias" placeholder="Alias" required>
+    <input type="text" id="altura" placeholder="Altura" required>
+    <input type="text" id="peso" placeholder="Peso" required>
+    <input type="text" id="poderes" placeholder="Poderes" required>
+    <input type="text" id="debilidad" placeholder="Debilidad" required>
+    <button type="submit">
+        Guardar Personaje
+    </button>
+    </form>
+</section>
+
+<!-- TABLA -->
+<section id="tabla" class="container">
+    <h2>Personajes Registrados</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Alias</th>
+                <th>Altura</th>
+                <th>Peso</th>
+                <th>Poderes</th>
+                <th>Debilidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody id="tablaPersonajes">
+            <!-- Aquí irá JavaScript después -->
+        </tbody>
+    </table>
+</section>
+
+<!-- CATALOGO -->
+<section id="catalogo" class="container">
+    <h2>Catálogo Demon Slayer</h2>
+    <div id="catalogoPersonajes" class="catalogo">
+        <!-- Tarjetas aquí después -->
+    </div>
+</section>
+<script>
+const formulario = document.getElementById("formPersonaje");
+let personajes =
+JSON.parse(localStorage.getItem("personajes")) || [];
+mostrarPersonajes();
+formulario.addEventListener("submit", function(e){
+    e.preventDefault();
+    const personaje = {
+        nombre: document.getElementById("nombre").value,
+        alias: document.getElementById("alias").value,
+        altura: document.getElementById("altura").value,
+        peso: document.getElementById("peso").value,
+        poderes: document.getElementById("poderes").value,
+        debilidad: document.getElementById("debilidad").value
+    };
+    personajes.push(personaje);
+    localStorage.setItem(
+        "personajes",
+        JSON.stringify(personajes)
+    );
+    formulario.reset();
+    mostrarPersonajes();
+});
+
+function mostrarPersonajes(){
+    const tabla =
+    document.getElementById("tablaPersonajes");
+    const catalogo =
+    document.getElementById("catalogoPersonajes");
+    tabla.innerHTML = "";
+    catalogo.innerHTML = "";
+    personajes.forEach((personaje, index) => {
+        tabla.innerHTML += `
+            <tr>
+                <td>${personaje.nombre}</td>
+                <td>${personaje.alias}</td>
+                <td>${personaje.altura}</td>
+                <td>${personaje.peso}</td>
+                <td>${personaje.poderes}</td>
+                <td>${personaje.debilidad}</td>
+                <td>
+                    <button class="btn-eliminar" onclick="eliminarPersonaje(${index})">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+        `;
+        catalogo.innerHTML += `
+            <div class="card-personaje">
+                <h3>${personaje.nombre}</h3>
+                <p><strong>Alias:</strong> ${personaje.alias}</p>
+                <p><strong>Altura:</strong> ${personaje.altura}</p>
+                <p><strong>Peso:</strong> ${personaje.peso}</p>
+                <p><strong>Poder:</strong> ${personaje.poderes}</p>
+                <p><strong>Debilidad:</strong> ${personaje.debilidad}</p>
+            </div>
+        `;
+    });
+}
+function eliminarPersonaje(index){
+    personajes.splice(index, 1);
+    localStorage.setItem(
+        "personajes",
+        JSON.stringify(personajes)
+    );
+    mostrarPersonajes();
+}
+</script>
+</body>
+</html>

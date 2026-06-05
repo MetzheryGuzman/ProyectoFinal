@@ -1,0 +1,202 @@
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    color:white;
+    background:black;
+}
+
+/* FONDO */
+.fondo-marvel{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+    opacity:0.35;
+}
+
+/* NAVBAR */
+.navbar{
+    background:rgba(120,0,0,0.90);
+    border:none;
+    border-radius:0;
+}
+
+/* ICONOS */
+.marvel-icon{
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    margin-right:5px;
+    object-fit:cover;
+}
+
+/* LINKS */
+.navbar-brand,
+.navbar-nav > li > a{
+    color:white !important;
+    font-weight:bold;
+    font-family: 'Controwell Script', sans-serif;
+}
+
+/* HOVER */
+.navbar-brand:hover,
+.navbar-nav > li > a:hover{
+    color:#ffcc00 !important;
+}
+
+/* MENUS */
+.dropdown-menu{
+    background:#5c0000;
+}
+
+.dropdown-menu li a{
+    color:white !important;
+}
+
+.dropdown-menu li a:hover{
+    background:#b30000 !important;
+}
+
+/* TITULOS */
+h1{
+    text-align:center;
+    font-size:60px;
+    color:#ffcc00;
+    margin-top:40px;
+    font-family: 'Gogono Cocoa Mochi', sans-serif;
+}
+
+h2{
+    color:#ffcc00;
+    margin-top:40px;
+    font-family: 'Sandy King', sans-serif;
+}
+
+p{
+    text-align:center;
+    font-size:18px;
+    font-family: 'Perspicacious Italic', sans-serif;
+}
+
+/* FORMULARIO */
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+form input,
+form textarea{
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    color: black;
+}
+
+form button{
+    background: #ffcc00;
+    color: black;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover{
+    background: #ffd633;
+    transform: scale(1.02);
+}
+
+/* TABLA */
+.table-container{
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+table{
+    background: rgba(255,255,255,0.95);
+    color: black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th{
+    background: #b30000;
+    color: white;
+}
+
+/* CATÁLOGO */
+.catalogo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+
+/* TARJETAS */
+.card-heroe{
+    width: 300px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 20px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    transition: 0.3s;
+}
+
+.card-heroe:hover{
+    transform: scale(1.03);
+}
+
+.card-heroe h3{
+    color: #ffcc00;
+    margin-top: 0;
+    text-align: center;
+}
+
+.card-heroe p{
+    text-align: left;
+    margin: 8px 0;
+}
+
+/* SECCIONES */
+#registro,
+#tabla,
+#catalogo{
+    margin-top: 50px;
+}
+
+#registro h2,
+#tabla h2,
+#catalogo h2{
+    text-align: center;
+    color: #ffcc00;
+    margin-bottom: 20px;
+}
+
+button{
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.btn-eliminar{
+    background: #d62828;
+    color: white;
+}
+
+.btn-eliminar:hover{
+    background: #a4161a;
+}

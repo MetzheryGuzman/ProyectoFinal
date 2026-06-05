@@ -1,0 +1,117 @@
+/* GENERAL */
+body{
+    background-color: #c70102;
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+    margin: 0;
+    color: white;
+}
+
+/* NAVBAR */
+.navbar{
+    background-color: #ff9ecf;
+    border: none;
+    border-radius: 0;
+}
+
+.navbar-brand,
+.navbar-nav > li > a{
+    color: #5a0033 !important;
+    font-size: 22px;
+    font-family: 'Controwell Script', sans-serif;
+}
+
+/* CONTENEDOR */
+.main-container{
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+/* TITULO */
+h1{
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 30px;
+    color: #fff;
+    font-family: 'Pokemon Solid', sans-serif;
+}
+
+/* INPUT */
+.placeholder{
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    width: 300px;
+    font-size: 18px;
+    text-align: center;
+    color: black;
+}
+
+/* BOTON */
+.button{
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f9ee60;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button:hover{
+    background-color: gold;
+}
+
+/* IMAGENES */
+#pikachu{
+    width: 250px;
+    margin-bottom: 20px;
+}
+
+#pokeImg{
+    width: 250px;
+    margin-top: 20px;
+}
+
+/* INFO */
+.pokeimg1{
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* GRAFICA */
+.grafica{
+    margin-top: 30px;
+}
+
+/* ANIMACION */
+#pikachu{
+    transition: transform 0.3s ease;
+}
+
+.animar-pikachu{
+    animation: pikaMove 0.6s ease;
+}
+
+@keyframes pikaMove {
+    0%{
+        transform: translateY(0);
+    }
+    25%{
+        transform: translateY(-20px);
+    }
+    50%{
+        transform: translateY(-35px);
+    }
+    75%{
+        transform: translateY(-20px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
